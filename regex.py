@@ -60,3 +60,25 @@ sample_data = """
 </body>
 </html>
 """
+# Extract information from sample business website
+extracted_data = {key: re.findall(pattern, sample_data) for key, pattern in patterns.items()}
+
+# Create file extracted_info.txt that will keep extracted data for future reference
+file_name = "extracted_info.txt"
+with open(file_name, "w") as file:
+    file.write("===== Extracted Information from Rwanda Business Hub =====\n")
+    for category, values in extracted_data.items():
+        if values:
+            file.write(f"\n{category}:\n")
+            for value in values:
+                file.write(f"   - {value}\n")
+
+# Display extracted information
+print("\n===== Extracted Information from Rwanda Business Hub =====")
+for category, values in extracted_data.items():
+    if values:
+        print(f"\n{category}:")
+        for value in values:
+            print(f"   - {value}")
+
+print(f"\n Extracted data has been successfully saved to '{file_name}'!")
