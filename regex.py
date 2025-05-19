@@ -16,3 +16,47 @@ patterns = {
     "Currency Amounts": r'(?:\$|RWF|USD|EUR)\s?\d{1,3}(?:,\d{3})*(?:\.\d{2})?', # Only extracts pricing found in website text
     "HTML Tags": r'<[^>]+>'  # Extracts all valid HTML elements
 }
+# Sample business website data where information would be extracted from
+sample_data = """
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to Rwanda Business Hub</title>
+    <meta name="description" content="Connecting businesses in Rwanda to growth opportunities.">
+</head>
+<body>
+    <header>
+        <h1>Rwanda Business Hub</h1>
+        <nav>
+            <a href="https://www.rwandabusiness.rw/home">Home</a> |
+            <a href="https://www.rwandabusiness.rw/services">Services</a> |
+            <a href="https://www.rwandabusiness.rw/contact">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>About Rwanda Business Hub</h2>
+        <p>Rwanda Business Hub is committed to driving innovation, supporting entrepreneurship, and fostering business growth across Rwanda.</p>
+
+        <h2>Our Services</h2>
+        <p>We offer specialized business consulting, investment support, and technology solutions.</p>
+        <p>Pricing: Basic Plan - <strong>$49.99</strong>, Premium Plan - <strong>$299.99</strong>.</p>
+
+        <h2>Client Testimonials</h2>
+        <p>"Rwanda Business Hub helped our company scale globally!" - A satisfied entrepreneur.</p>
+        <p>"Exceptional consulting services—highly recommended!" - Another business owner.</p>
+
+        <h2>Contact Us</h2>
+        <p>Reach out via <a href="mailto:info@rwandabusiness.rw">info@rwandabusiness.rw</a></p>
+        <p>Customer support: (250) 789-456-123 or 250-123-456789.</p>
+        <p>Secure payments accepted via credit card: 1234-5678-9012-3456.</p>
+        <p>Follow updates with #BusinessRwanda</p>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Rwanda Business Hub - All Rights Reserved.</p>
+        <p>Follow us on Twitter: <a href="https://twitter.com/RwandaBiz">https://twitter.com/RwandaBiz</a></p>
+    </footer>
+</body>
+</html>
+"""
