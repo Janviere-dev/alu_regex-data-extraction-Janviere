@@ -3,7 +3,7 @@
 ## Cloning This Project in VS Code
 Hello! Welcome to my **Regex Data Extraction Tool** repository.  
 To get started, **clone this repository** and open it in **VS Code**:
-git clone https://github.com/your-repo-name/Regex-Data-Extraction-Tool.git
+https://github.com/Janviere-dev/alu_regex-data-extraction-Janviere.git
 
 Once inside the project folder, open **VS Code** and navigate to the workspace.
 
