@@ -42,5 +42,22 @@ for filename in os.listdir(folder_path):
         for word in sample_data.split():
             if word not in found_values and re.match(pattern, word):
                 invalid_data[category].add(word)
+# Save extracted data into separate files
+for category, values in extracted_data.items():
+    file_name = f"{category.replace(' ', '_').lower()}_data.txt"
+    with open(file_name, "w", encoding="utf-8") as file:
+        file.write(f"===== Extracted {category} =====\n")
+        for value in sorted(values):
+            file.write(f"{value}\n")
+
+# Save errors separately with proper formatting
+error_file = "error_log.txt"
+with open(error_file, "w", encoding="utf-8") as file:
+    file.write("===== Categorized Invalid Data =====\n")
+    for category, errors in invalid_data.items():
+        if errors:
+            file.write(f"\n{category}:\n")
+            for value in sorted(errors):
+                file.write(f"{value}\n")
 
 
