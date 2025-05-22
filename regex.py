@@ -59,5 +59,107 @@ with open(error_file, "w", encoding="utf-8") as file:
             file.write(f"\n{category}:\n")
             for value in sorted(errors):
                 file.write(f"{value}\n")
+def extract_from_user_input():
+    """ This function allows users to input multiple values before exiting and logs errors correctly."""
+    while True:
+        print("\n===== Select Data Type to Input =====")
+        print("1. Email\n2. URL\n3. Phone Number\n4. Credit Card\n5. Currency Amount\n6. Hashtag\n7. Time\n8. Exit")
+        
+        choice_map = {
+            "1": "Emails",
+            "2": "URLs",
+            "3": "Phone Numbers",
+            "4": "Credit Cards",
+            "5": "Currency Amounts",
+            "6": "Hashtags",
+            "7": "Time"
+        }
 
+        choice = input("\nChoose an option (1-8): ")
+
+        if choice == "8":
+            break  
+
+        category = choice_map.get(choice)
+        if not category:
+            print("\n Invalid choice! Please try again.")
+            continue
+
+        while True:
+            user_input = input(f"\nEnter {category} (or type 'done' to finish): ")
+
+            if user_input.lower() == "done":
+                print("\n Input session completed.")
+                break  
+
+            elif user_input and re.match(patterns[category], user_input):
+                print(f"\n Valid {category} detected: {user_input}")
+
+                file_name = f"{category.replace(' ', '_').lower()}_data.txt"
+                with open(file_name, "a", encoding="utf-8") as file:
+                    file.write(f"{user_input}\n")
+                print(f"\n Data saved successfully in {file_name}.")
+            elif user_input:  
+                print(f"\n Invalid {category} format!")
+
+                with open("error_log.txt", "a", encoding="utf-8") as error_file:
+                    error_file.write(f"\nInvalid {category}: {user_input}")
+                print("\n Error logged in error_log.txt.")
+
+def display_extracted_data():
+    """Displays extracted data based on user request."""
+    while True:
+        print("\n===== Display Extracted Data =====")
+        print("1. Emails\n2. URLs\n3. Phone Numbers\n4. Credit Cards\n5. Currency Amounts\n6. Hashtags\n7. Time\n8. Exit")
+        
+        choice_map = {
+            "1": "Emails",
+            "2": "URLs",
+            "3": "Phone Numbers",
+            "4": "Credit Cards",
+            "5": "Currency Amounts",
+            "6": "Hashtags",
+            "7": "Time"
+        }
+        
+        choice = input("\nChoose an option (1-8): ")
+
+        if choice == "8":
+            break
+
+        category = choice_map.get(choice)
+        if not category:
+            print("\n Invalid choice! Please try again.")
+            continue
+
+        file_name = f"{category.replace(' ', '_').lower()}_data.txt"
+        if os.path.exists(file_name):
+            print(f"\n===== Displaying Extracted {category} =====")
+            with open(file_name, "r", encoding="utf-8") as file:
+                print(file.read())
+        else:
+            print(f"\n No data found for {category}!")
+
+def main_menu():
+    """Providing a menu for users to choose actions."""
+    while True:
+        print("\n===== Regex Data Extraction Tool =====")
+        print("1. Display Extracted Data")
+        print("2. Enter Data for Extraction")
+        print("3. Exit")
+        
+        choice = input("\nChoose an option (1/2/3): ")
+
+        if choice == "1":
+            display_extracted_data()
+        elif choice == "2":
+            extract_from_user_input()
+        elif choice == "3":
+            print("\ Many thanks for using our Regex Super Power of Extraction! ")
+            break
+        else:
+            print("\n Invalid choice! Please try again.")
+
+# Run Main Menu
+main_menu()
 
