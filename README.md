@@ -43,7 +43,7 @@ Additionally, it lets users **manually enter data** for extraction.
 2. Open the **Integrated Terminal** (`Ctrl + ~`).
 3. **Run the extraction script**:
    ```sh
-   python regex.py
+   python3 regex.py
    ```
 4. Follow the interactive prompts to **extract or validate data**.
 
@@ -61,7 +61,8 @@ After running the script, these files will be visible in the same directory. You
 ## Running Regex Tests
 To test whether the regex patterns correctly validate expected data, run:
 ```sh
-python test_regex.py
+python3 test_regex.py
+After exit to see the validated data
 ```
 This will assess if the regex patterns match the expected formats.
 
