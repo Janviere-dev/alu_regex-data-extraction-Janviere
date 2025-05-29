@@ -49,7 +49,7 @@ Additionally, it lets users **manually enter data** for extraction.
 
 ---
 
-** How Files Are Generated  
+ How Files Are Generated  
 Once you run regex.py, the script will automatically extract and categorize data into separate files. These files are created inside the project directory, depending on the type of data found.
 For example:
 - Extracted email addresses will be saved in emails_data.txt.
